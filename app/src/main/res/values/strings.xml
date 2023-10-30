@@ -5,4 +5,6 @@
     <string name="create_contact">Create contact</string>
     <string name="phone_number">Phone number</string>
     <string name="contact_name">%s %s</string>
+    <string name="edit">Edit</string>
+    <string name="empty_contact_message">Contact name and phone can\'t be empty</string>
 </resources>

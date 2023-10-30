@@ -1,44 +1,40 @@
 package com.example.contactslist.ui.contacts
 
 import androidx.lifecycle.ViewModel
+import com.example.contactslist.Utils.contacts
+import com.example.contactslist.Utils.generateContacts
 import com.example.contactslist.adapterDelegetion.DisplayableItem
 import com.example.contactslist.ui.contacts.model.AddContactItem
 import com.example.contactslist.ui.contacts.model.ContactItem
 import kotlin.random.Random
 
 class ContactsViewModel : ViewModel() {
-    private val hardcodedContacts = mutableListOf<DisplayableItem>(
-        AddContactItem()
-    )
-    
-    fun generateContacts() {
-        for (i in 0..100) {
-            val name = generateName()
-            val surname = generateSurname()
-            val phoneNumber = generatePhoneNumber()
-            val contact = ContactItem(i, name, surname, phoneNumber)
-            hardcodedContacts.add(contact)
+    private var hardcodedContacts = contacts
+
+    fun constructName(name: String, surname: String?): String {
+        return if (surname.isNullOrEmpty())
+            name
+        else
+            "$name $surname"
+    }
+
+    fun setContacts(contacts: MutableList<DisplayableItem>) {
+        hardcodedContacts = contacts
+    }
+
+    fun getContacts(): List<DisplayableItem> = hardcodedContacts
+    fun editContact(
+        editedContactId: Int?,
+        editedContactName: String?,
+        editedContactPhoneNumber: String?
+    ) {
+        for (i in 1 until hardcodedContacts.size) {
+            val contact = hardcodedContacts[i] as ContactItem
+            if (contact.contactId == editedContactId) {
+                contact.name = editedContactName ?: contact.name
+                contact.surname = null
+                contact.phoneNumber = editedContactPhoneNumber ?: contact.phoneNumber
+            }
         }
-    }
-
-    fun getContacts() = hardcodedContacts
-
-    private fun generatePhoneNumber(): String {
-        var phoneNumber = "+7"
-        for (j in 0..8) {
-            val digit = Random.nextInt(10)
-            phoneNumber += digit.toString()
-        }
-        return phoneNumber
-    }
-
-    private fun generateSurname(): String? {
-        val surnames = listOf("Smith", "James", "Cooper", null, "Allen", "Harris", "Bell", "Johnson", "Roberts", "Edwards")
-        return surnames.random()
-    }
-
-    private fun generateName(): String {
-        val names = listOf("Alice", "Bob", "Charlie", "David", "Emma", "Frank", "Martin", "David", "Carl", "Masha", "Victor")
-        return names.random()
     }
 }

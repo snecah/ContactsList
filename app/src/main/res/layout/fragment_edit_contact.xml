@@ -1,39 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.editContact.EditContactFragment">
 
     <EditText
         android:id="@+id/detailed_contact_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="Anatoliy Bocharov"
         android:textSize="30sp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/detailed_phone_number"
-        android:src="@drawable/baseline_phone_24"
         android:layout_marginEnd="5dp"
+        android:src="@drawable/baseline_phone_24"
         app:layout_constraintBottom_toBottomOf="@id/detailed_phone_number"
-        app:layout_constraintEnd_toStartOf="@id/detailed_phone_number"/>
+        app:layout_constraintEnd_toStartOf="@id/detailed_phone_number"
+        app:layout_constraintTop_toTopOf="@id/detailed_phone_number" />
 
     <EditText
         android:id="@+id/detailed_phone_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAlignment="center"
         android:inputType="number"
         android:text="+8345345375"
         android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@id/detailed_contact_name"
-        app:layout_constraintStart_toStartOf="@id/detailed_contact_name"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailed_contact_name" />
+
+
+    <Button
+        android:id="@+id/edit_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="@string/edit"
+        app:layout_constraintTop_toBottomOf="@id/detailed_phone_number"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
