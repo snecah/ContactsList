@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/myContactsFragment">
+
+    <fragment
+        android:id="@+id/myContactsFragment"
+        android:name="com.example.contactslist.ui.contacts.ContactsFragment"
+        android:label="fragment_my_contacts"
+        tools:layout="@layout/fragment_my_contacts" >
+        <action
+            android:id="@+id/action_myContactsFragment_to_editContactFragment"
+            app:destination="@id/editContactFragment" />
+        <action
+            android:id="@+id/action_myContactsFragment_to_createContactFragment"
+            app:destination="@id/createContactFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editContactFragment"
+        android:name="com.example.contactslist.ui.editContact.EditContactFragment"
+        android:label="fragment_edit_contact"
+        tools:layout="@layout/fragment_edit_contact" >
+        <action
+            android:id="@+id/action_editContactFragment_to_myContactsFragment"
+            app:destination="@id/myContactsFragment" />
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+        <argument
+            android:name="contactName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/createContactFragment"
+        android:name="com.example.contactslist.ui.createContact.CreateContactFragment"
+        android:label="fragment_create_contact"
+        tools:layout="@layout/fragment_create_contact" >
+        <action
+            android:id="@+id/action_createContactFragment_to_myContactsFragment"
+            app:destination="@id/myContactsFragment" />
+    </fragment>
+</navigation>

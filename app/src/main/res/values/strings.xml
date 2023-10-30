@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ContactsList</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_contact">Create contact</string>
+    <string name="phone_number">Phone number</string>
+    <string name="contact_name">%s %s</string>
+</resources>
