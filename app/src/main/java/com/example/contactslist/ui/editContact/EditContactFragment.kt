@@ -12,6 +12,7 @@ import com.example.contactslist.databinding.FragmentEditContactBinding
 private const val PHONE_NUMBER = "phoneNumber"
 private const val CONTACT_NAME = "contactName"
 private const val CONTACT_ID = "contactId"
+private const val EDIT_CONTACT_FRAGMENT_ID = 1
 
 class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
 
@@ -41,7 +42,8 @@ class EditContactFragment : Fragment(R.layout.fragment_edit_contact) {
             EditContactFragmentDirections.actionEditContactFragmentToMyContactsFragment(
                 phoneNumber,
                 name,
-                contactId
+                contactId,
+                EDIT_CONTACT_FRAGMENT_ID
             )
         findNavController().navigate(action)
     }

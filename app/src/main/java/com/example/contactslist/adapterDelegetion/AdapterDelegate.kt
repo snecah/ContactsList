@@ -13,6 +13,6 @@ interface AdapterDelegate<T> {
     fun onBindViewHolder(holder: RecyclerView.ViewHolder, items: List<T>, position: Int)
 }
 
-interface DisplayableItem:Parcelable {
+interface DisplayableItem {
     val id: Int
 }

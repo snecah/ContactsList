@@ -37,4 +37,16 @@ class ContactsViewModel : ViewModel() {
             }
         }
     }
+
+    fun addContact(newContactName: String?, newContactPhoneNumber: String?) {
+        val nextId = (hardcodedContacts.last() as ContactItem).contactId + 1
+        hardcodedContacts.add(
+            ContactItem(
+                nextId,
+                newContactName ?: "",
+                null,
+                newContactPhoneNumber ?: "88005553535"
+            )
+        )
+    }
 }

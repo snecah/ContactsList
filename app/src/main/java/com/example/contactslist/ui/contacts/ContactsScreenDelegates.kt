@@ -49,7 +49,7 @@ object ContactsScreenDelegates {
         }
     }
 
-    class AddContactListItemDelegate() :
+    class AddContactListItemDelegate(private val onAddContactItemClicked:(AddContactItem) -> Unit) :
         ListItemAdapterDelegate<AddContactItem, DisplayableItem, AddContactListItemDelegate.AddContactViewHolder>() {
         inner class AddContactViewHolder(private val biding: AddContactItemBinding) :
             RecyclerView.ViewHolder(biding.root) {
@@ -68,7 +68,7 @@ object ContactsScreenDelegates {
 
         override fun onBindViewHolder(item: AddContactItem, holder: AddContactViewHolder) {
             holder.bind(item)
-            holder.itemView.setOnClickListener {}
+            holder.itemView.setOnClickListener {onAddContactItemClicked(item)}
         }
     }
 
