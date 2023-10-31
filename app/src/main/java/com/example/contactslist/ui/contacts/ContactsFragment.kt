@@ -25,7 +25,8 @@ class ContactsFragment : Fragment(R.layout.fragment_my_contacts) {
     private val adapter by lazy {
         ContactsAdapter(
             onContactItemClicked(),
-            onAddContactItemClicked()
+            onAddContactItemClicked(),
+            onContactItemLongClick()
         )
     }
 
@@ -62,6 +63,11 @@ class ContactsFragment : Fragment(R.layout.fragment_my_contacts) {
     private fun onAddContactItemClicked(): (AddContactItem) -> Unit = {
         val action = ContactsFragmentDirections.actionMyContactsFragmentToCreateContactFragment()
         findNavController().navigate(action)
+    }
+
+    private fun onContactItemLongClick():(ContactItem, position: Int) -> Unit = { contact, position ->
+        viewModel.markContact(contact)
+        adapter.notifyItemChanged(position)
     }
 
 }

@@ -49,4 +49,8 @@ class ContactsViewModel : ViewModel() {
             )
         )
     }
+
+    fun markContact(contact: ContactItem) {
+        contact.isSelected = !contact.isSelected
+    }
 }

@@ -8,4 +8,5 @@
     <string name="edit">Edit</string>
     <string name="empty_contact_message">Contact name and phone can\'t be empty</string>
     <string name="create">Create</string>
+    <string name="delete_icon">delete_icon</string>
 </resources>

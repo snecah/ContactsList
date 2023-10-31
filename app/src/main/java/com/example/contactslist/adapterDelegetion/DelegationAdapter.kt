@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
-abstract class DelegationAdapter<T>(private val callback: DiffUtil.ItemCallback<T>
+abstract class DelegationAdapter<T>(
+    private val callback: DiffUtil.ItemCallback<T>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val differ by  lazy{ AsyncListDiffer(this, callback) }
+    private val differ by lazy { AsyncListDiffer(this, callback) }
 
     val delegatesManager = AdapterDelegatesManager<T>()
 
@@ -18,9 +19,9 @@ abstract class DelegationAdapter<T>(private val callback: DiffUtil.ItemCallback<
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
-
-        return delegatesManager.onBindViewHolder(differ.currentList, position, holder)
+        return delegatesManager.onBindViewHolder(
+            differ.currentList, position, holder
+        )
     }
 
     override fun getItemCount(): Int {

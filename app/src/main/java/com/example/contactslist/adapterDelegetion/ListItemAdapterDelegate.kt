@@ -13,9 +13,14 @@ abstract class ListItemAdapterDelegate<I : T, T, VH : RecyclerView.ViewHolder> :
     abstract override fun onCreateViewHolder(parent: ViewGroup): VH
 
     @Suppress("UNCHECKED_CAST")
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, items: List<T>, position: Int) {
+    override fun onBindViewHolder(
+        holder: RecyclerView.ViewHolder,
+        items: List<T>,
+        position: Int
+    ) {
         onBindViewHolder(items[position] as I, holder as VH)
     }
+
 
     abstract fun onBindViewHolder(item: I, holder: VH)
 }

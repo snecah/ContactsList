@@ -6,12 +6,15 @@ import com.example.contactslist.ui.contacts.model.AddContactItem
 import com.example.contactslist.ui.contacts.model.ContactItem
 import com.example.contactslist.ui.diffUtil.BaseDiffUtilCallback
 
-class ContactsAdapter(private val onContactItemClicked: (ContactItem) -> Unit, private val onAddContactItemClicked :(AddContactItem) -> Unit) :
+class ContactsAdapter(
+    private val onContactItemClicked: (ContactItem) -> Unit,
+    private val onAddContactItemClicked: (AddContactItem) -> Unit,
+    private val  onContactItemLongClick:(ContactItem, position: Int) -> Unit) :
     DelegationAdapter<DisplayableItem>(BaseDiffUtilCallback()) {
     init {
         with(delegatesManager) {
             addDelegate(ContactsScreenDelegates.AddContactListItemDelegate(onAddContactItemClicked))
-            addDelegate(ContactsScreenDelegates.ContactListItemDelegate(onContactItemClicked))
+            addDelegate(ContactsScreenDelegates.ContactListItemDelegate(onContactItemClicked, onContactItemLongClick))
         }
     }
 }
