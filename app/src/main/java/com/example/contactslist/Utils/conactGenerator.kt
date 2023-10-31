@@ -4,8 +4,7 @@ import com.example.contactslist.adapterDelegetion.DisplayableItem
 import com.example.contactslist.ui.contacts.model.AddContactItem
 import com.example.contactslist.ui.contacts.model.ContactItem
 import kotlin.random.Random
-
-val contacts = generateContacts()
+var contacts = generateContacts()
 
 fun generateContacts(): MutableList<DisplayableItem> {
     val contacts = mutableListOf<DisplayableItem>(

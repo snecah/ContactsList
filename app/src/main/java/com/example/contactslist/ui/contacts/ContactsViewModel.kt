@@ -2,15 +2,13 @@ package com.example.contactslist.ui.contacts
 
 import androidx.lifecycle.ViewModel
 import com.example.contactslist.Utils.contacts
-import com.example.contactslist.Utils.generateContacts
 import com.example.contactslist.adapterDelegetion.DisplayableItem
 import com.example.contactslist.ui.contacts.model.AddContactItem
 import com.example.contactslist.ui.contacts.model.ContactItem
-import kotlin.random.Random
 
 class ContactsViewModel : ViewModel() {
-    private var hardcodedContacts = contacts
 
+    private var hardcodedContacts = contacts
     fun constructName(name: String, surname: String?): String {
         return if (surname.isNullOrEmpty())
             name
@@ -53,4 +51,14 @@ class ContactsViewModel : ViewModel() {
     fun markContact(contact: ContactItem) {
         contact.isSelected = !contact.isSelected
     }
+
+    fun deleteContacts() {
+        val toSave = mutableListOf<DisplayableItem>(AddContactItem())
+        for(i in 1 until hardcodedContacts.size) {
+            if (!(hardcodedContacts[i] as ContactItem).isSelected)
+                toSave.add(hardcodedContacts[i])
+        }
+        hardcodedContacts = toSave
+    }
+
 }

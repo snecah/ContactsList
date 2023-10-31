@@ -35,6 +35,13 @@ class ContactsFragment : Fragment(R.layout.fragment_my_contacts) {
         binding.recyclerView.adapter = adapter
         adapter.setItems(viewModel.getContacts())
 
+
+        binding.fab.setOnClickListener {
+            viewModel.deleteContacts()
+            adapter.setItems(viewModel.getContacts())
+        }
+
+
         if (arguments?.isEmpty == false) {
             val arg = arguments
             val newContactName = arg?.getString(CONTACT_NAME)
@@ -48,6 +55,7 @@ class ContactsFragment : Fragment(R.layout.fragment_my_contacts) {
             adapter.setItems(viewModel.getContacts())
         }
     }
+
 
 
     private fun onContactItemClicked(): (ContactItem) -> Unit = {
