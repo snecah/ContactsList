@@ -58,6 +58,7 @@ class ContactsFragment : Fragment(R.layout.fragment_my_contacts) {
 
 
 
+
     private fun onContactItemClicked(): (ContactItem) -> Unit = {
         val contactName = viewModel.constructName(it.name, it.surname)
         val action = ContactsFragmentDirections.actionMyContactsFragmentToEditContactFragment(

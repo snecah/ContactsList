@@ -1,14 +1,14 @@
 package com.example.contactslist.ui.contacts
 
 import androidx.lifecycle.ViewModel
-import com.example.contactslist.Utils.contacts
+import com.example.contactslist.Utils.ContactsGenerator
 import com.example.contactslist.adapterDelegetion.DisplayableItem
 import com.example.contactslist.ui.contacts.model.AddContactItem
 import com.example.contactslist.ui.contacts.model.ContactItem
 
 class ContactsViewModel : ViewModel() {
 
-    private var hardcodedContacts = contacts
+    private var hardcodedContacts = ContactsGenerator.contacts
     fun constructName(name: String, surname: String?): String {
         return if (surname.isNullOrEmpty())
             name
@@ -58,6 +58,7 @@ class ContactsViewModel : ViewModel() {
             if (!(hardcodedContacts[i] as ContactItem).isSelected)
                 toSave.add(hardcodedContacts[i])
         }
+        ContactsGenerator.saveContacts(toSave)
         hardcodedContacts = toSave
     }
 
