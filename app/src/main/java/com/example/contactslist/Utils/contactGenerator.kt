@@ -8,7 +8,7 @@ fun generateContacts(): MutableList<DisplayableItem> {
     val contacts = mutableListOf<DisplayableItem>(
         AddContactItem()
     )
-    for (i in 0..100) {
+    for (i in 0..10) {
         val name = generateName()
         val surname = generateSurname()
         val phoneNumber = generatePhoneNumber()

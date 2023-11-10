@@ -48,15 +48,24 @@ class ContactsFragment : Fragment(R.layout.fragment_my_contacts) {
             val newContactPhoneNumber = arg?.getString(PHONE_NUMBER)
             val editedContactId = arg?.getInt(CONTACT_ID)
             val fragmentId = arg?.getInt(FRAGMENT_ID)
-            if (fragmentId == EDIT_CONTACT_FRAGMENT_ID)
+            if ((fragmentId == EDIT_CONTACT_FRAGMENT_ID) and (!arguments?.getString(CONTACT_NAME)
+                    .isNullOrEmpty())
+            ) {
                 viewModel.editContact(editedContactId, newContactName, newContactPhoneNumber)
-            if(fragmentId == CREATE_CONTACT_FRAGMENT_ID)
+                arguments?.remove(CONTACT_ID)
+                arguments?.remove(CONTACT_NAME)
+                arguments?.remove(PHONE_NUMBER)
+            }
+            if ((fragmentId == CREATE_CONTACT_FRAGMENT_ID) and (!arguments?.getString(CONTACT_NAME)
+                    .isNullOrEmpty())
+            ) {
                 viewModel.addContact(newContactName, newContactPhoneNumber)
+                arguments?.remove(PHONE_NUMBER)
+                arguments?.remove(CONTACT_NAME)
+            }
             adapter.setItems(viewModel.getContacts())
         }
     }
-
-
 
 
     private fun onContactItemClicked(): (ContactItem) -> Unit = {
@@ -74,9 +83,10 @@ class ContactsFragment : Fragment(R.layout.fragment_my_contacts) {
         findNavController().navigate(action)
     }
 
-    private fun onContactItemLongClick():(ContactItem, position: Int) -> Unit = { contact, position ->
-        viewModel.markContact(contact)
-        adapter.notifyItemChanged(position)
-    }
+    private fun onContactItemLongClick(): (ContactItem, position: Int) -> Unit =
+        { contact, position ->
+            viewModel.markContact(contact)
+            adapter.notifyItemChanged(position)
+        }
 
 }
